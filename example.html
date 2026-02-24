@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rezi Bullet Point SDK — Example</title>
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1e293b; }
+      .page { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+      h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+      .desc { color: #64748b; font-size: 15px; margin-bottom: 32px; }
+
+      /* Code Block */
+      .code-section { margin-top: 48px; }
+      .code-section h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+      .code-section p { color: #64748b; font-size: 14px; margin-bottom: 12px; line-height: 1.6; }
+      .code-block {
+        background: #0f172a; color: #e2e8f0; border-radius: 8px;
+        padding: 20px; font-family: 'Courier New', monospace; font-size: 13px;
+        line-height: 1.8; overflow-x: auto; white-space: pre; margin-bottom: 32px;
+      }
+      .code-block .tag { color: #7dd3fc; }
+      .code-block .attr { color: #fcd34d; }
+      .code-block .str { color: #86efac; }
+      .code-block .cmt { color: #475569; }
+      .code-block .kw { color: #c4b5fd; }
+
+      .params { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 32px; }
+      .params th { text-align: left; padding: 10px 12px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; color: #374151; }
+      .params td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+      .params code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 12px; color: #4d70eb; }
+      .params .required { color: #ef4444; font-size: 11px; font-weight: 600; }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <h1>Rezi Bullet Point SDK</h1>
+      <p class="desc">AI-powered resume bullet point generator. Enter a job title, select skills, and generate tailored bullet points instantly.</p>
+
+      <!-- ══════════════════════════════════════════════
+           SDK Integration
+      ═══════════════════════════════════════════════ -->
+      <div
+        data-bullet-generator
+        data-dev="true"
+        data-recaptcha-key="6LchNU0qAAAAABJWpEGPPrRjiMM7rj3JYTylBDn1"
+        data-cta-url="https://app.rezi.ai/signup"
+        data-max-skills="5"
+      ></div>
+
+      <!-- ══════════════════════════════════════════════
+           Usage Guide
+      ═══════════════════════════════════════════════ -->
+      <div class="code-section">
+        <h2>Quick Start</h2>
+        <p>Add this snippet to your HTML. No CSS file needed — styles are bundled in the script.</p>
+
+        <div class="code-block"><span class="cmt">&lt;!-- 1. Place the container where you want the widget --&gt;</span>
+<span class="tag">&lt;div</span>
+  <span class="attr">data-bullet-generator</span>
+  <span class="attr">data-recaptcha-key</span>=<span class="str">"YOUR_RECAPTCHA_SITE_KEY"</span>
+  <span class="attr">data-cta-url</span>=<span class="str">"https://rezi.ai/signup"</span>
+  <span class="attr">data-max-skills</span>=<span class="str">"5"</span>
+<span class="tag">&gt;&lt;/div&gt;</span>
+
+<span class="cmt">&lt;!-- 2. Load the SDK script --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://cdn.jsdelivr.net/npm/@rezi/bulletpoint-sdk/rezi-bullets.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span></div>
+
+        <h2>Data Attributes</h2>
+        <table class="params">
+          <thead>
+            <tr><th>Attribute</th><th>Description</th><th>Default</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>data-bullet-generator</code></td>
+              <td>Marks the element as the SDK container. <span class="required">Required</span></td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><code>data-recaptcha-key</code></td>
+              <td>reCAPTCHA Enterprise site key for API access. <span class="required">Required</span></td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><code>data-cta-url</code></td>
+              <td>URL to redirect when CTA button is clicked or rate limit is reached.</td>
+              <td>-</td>
+            </tr>
+            <tr>
+              <td><code>data-max-skills</code></td>
+              <td>Maximum number of skills a user can select.</td>
+              <td><code>5</code></td>
+            </tr>
+            <tr>
+              <td><code>data-dev</code></td>
+              <td>Enable dev mode (console logs). Remove for production.</td>
+              <td><code>false</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Manual Initialization (with callbacks)</h2>
+        <p>For more control, initialize the SDK via JavaScript instead of data attributes.</p>
+
+        <div class="code-block"><span class="tag">&lt;div</span> <span class="attr">id</span>=<span class="str">"my-container"</span><span class="tag">&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://cdn.jsdelivr.net/npm/@rezi/bulletpoint-sdk/rezi-bullets.min.js"</span><span class="tag">&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">const</span> generator = <span class="kw">new</span> ReziBulletSDK.BulletPointGenerator({
+    containerSelector: <span class="str">'#my-container'</span>,
+    ctaUrl: <span class="str">'https://rezi.ai/signup'</span>,
+    maxSkillSelection: <span class="str">5</span>,
+
+    <span class="cmt">// Called when bullet points are generated</span>
+    onGenerate: (bullets) =&gt; console.log(<span class="str">'Generated:'</span>, bullets),
+
+    <span class="cmt">// Called when a bullet is copied</span>
+    onCopy: (bullet) =&gt; console.log(<span class="str">'Copied:'</span>, bullet),
+
+    <span class="cmt">// Called when CTA button is clicked (before redirect)</span>
+    onCTAClick: (bullets, jobTitle) =&gt; {
+      localStorage.setItem(<span class="str">'resume_prefill'</span>, JSON.stringify({ jobTitle, bullets }));
+    },
+  });
+<span class="tag">&lt;/script&gt;</span></div>
+      </div>
+    </div>
+
+    <!-- SDK Script (local build) -->
+    <script src="../../dist/libs/bulletpoint-sdk-browser/rezi-bullets.min.js"></script>
+  </body>
+</html>
