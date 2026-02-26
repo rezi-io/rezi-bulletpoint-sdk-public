@@ -19,7 +19,7 @@ The easiest way to add the bullet point generator to your website:
       data-max-skills="5"
     ></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@rezi/bulletpoint-sdk/rezi-bullets.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rezi/bulletpoint-sdk/rezi-bullet-sdk.min.js"></script>
   </body>
 </html>
 ```

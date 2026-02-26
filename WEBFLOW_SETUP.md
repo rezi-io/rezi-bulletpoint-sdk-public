@@ -7,13 +7,13 @@ After publishing to GitHub, you can use jsDelivr for faster, global delivery:
 ### Latest Version (Development)
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullet-sdk.min.js"></script>
 ```
 
 ### Specific Commit (Production)
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@COMMIT_HASH/rezi-bullets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@COMMIT_HASH/rezi-bullet-sdk.min.js"></script>
 ```
 
 # Rezi Bullet Point SDK - Getting Started
@@ -37,7 +37,7 @@ The easiest way to add the bullet point generator to your website:
 			data-max-skills="5"
 		></div>
 
-		<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullets.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullet-sdk.min.js"></script>
 	</body>
 </html>
 ```

@@ -1,0 +1,823 @@
+/* Rezi Bullet Point Generator SDK Styles */
+/* Namespace: rbp- (Rezi Bullet Point) - avoids conflicts with host page styles */
+
+/* CSS Variables - prefixed to avoid conflicts */
+:root {
+  /* Primary - Rezi Blue */
+  --rbp-primary: #4d70eb;
+  --rbp-primary-light: #c6c8ff;
+  --rbp-blue-500: #6b84fe;
+
+  /* Gray Scale */
+  --rbp-gray-50: #f9fafb;
+  --rbp-gray-100: #f3f4f6;
+  --rbp-gray-200: #e5e7eb;
+  --rbp-gray-300: #d1d5db;
+  --rbp-gray-400: #9ca3af;
+  --rbp-gray-500: #6b7280;
+  --rbp-gray-600: #4b5563;
+  --rbp-gray-700: #374151;
+  --rbp-gray-900: #111827;
+
+  /* Neutral */
+  --rbp-neutral-0: #ffffff;
+  --rbp-neutral-900: #171717;
+
+  /* Slate */
+  --rbp-slate-100: #f1f5f9;
+  --rbp-slate-200: #e2e8f0;
+  --rbp-slate-300: #cbd5e1;
+
+  /* Semantic */
+  --rbp-success: #22c55e;
+  --rbp-error: #ef4444;
+
+  /* UI Components */
+  --rbp-choice-list-item-normal: #f8fafc;
+  --rbp-choice-list-item-hover: #f1f5f9;
+  --rbp-choice-list-item-stroke: #e2e8f0;
+  --rbp-input-stroke: #e2e8f0;
+  --rbp-input-bg-disabled: #e5e5e5;
+  --rbp-input-disabled: #d4d4d4;
+
+  /* Text */
+  --rbp-text-primary: #374151;
+  --rbp-text-secondary: #6b7280;
+  --rbp-text-label: #9ca3af;
+
+  /* Border */
+  --rbp-border: #e5e7eb;
+  --rbp-surface-2-stroke: #e2e8f0;
+
+  /* Background */
+  --rbp-surface-2: #ffffff;
+  --rbp-surface-skeleton: #e2e8f0;
+  --rbp-surface-3: #1e293b;
+  --rbp-surface-3-label: #fff;
+
+  /* Shadow */
+  --rbp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --rbp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --rbp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Radius */
+  --rbp-rounded-sm: 4px;
+  --rbp-rounded-md: 6px;
+  --rbp-rounded-lg: 8px;
+  --rbp-rounded-full: 9999px;
+
+  /* Font */
+  --rbp-font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* Reset */
+.rbp-generator * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Container */
+.rbp-generator {
+  font-family: var(--rbp-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--rbp-text-primary);
+}
+
+.rbp-generator input,
+.rbp-generator select,
+.rbp-generator button,
+.rbp-generator textarea {
+  font-family: inherit;
+}
+
+/* Wrapper - 2 Column Layout */
+.rbp-wrapper {
+  position: relative;
+  border: 1px solid var(--rbp-surface-2-stroke);
+  border-radius: var(--rbp-rounded-lg);
+  margin: 0 auto;
+}
+
+/* Panel */
+.rbp-panel {
+  background: var(--rbp-surface-2);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Panel Header */
+.rbp-panel-header {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.rbp-header-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--rbp-primary);
+}
+
+.rbp-panel-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--rbp-gray-900);
+}
+
+.rbp-content-wrapper {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Input Group */
+.rbp-input-group {
+  width: 100%;
+}
+
+.rbp-input-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.14px;
+  color: var(--rbp-gray-900);
+  margin-bottom: 4px;
+}
+
+/* Input Wrapper */
+.rbp-input-wrapper {
+  position: relative;
+}
+
+/* Input */
+.rbp-input {
+  width: 100%;
+  height: 42px;
+  padding: 6px 16px;
+  border: 2px solid var(--rbp-input-stroke);
+  border-radius: var(--rbp-rounded-md);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.rbp-input:hover {
+  border-color: var(--rbp-gray-300);
+}
+
+.rbp-input:focus {
+  outline: none;
+  border-color: var(--rbp-primary);
+}
+
+.rbp-input::placeholder {
+  color: var(--rbp-gray-300);
+}
+
+.rbp-input:disabled {
+  background: var(--rbp-input-bg-disabled);
+  color: var(--rbp-input-disabled);
+  cursor: not-allowed;
+  border-color: var(--rbp-input-bg-disabled);
+}
+
+/* Autocomplete List */
+.rbp-autocomplete-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--rbp-neutral-0);
+  border: 1px solid var(--rbp-border);
+  border-radius: var(--rbp-rounded-md);
+  box-shadow: var(--rbp-shadow-lg);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.rbp-autocomplete-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease;
+}
+
+.rbp-autocomplete-item:hover {
+  background: var(--rbp-gray-50);
+}
+
+/* Select */
+.rbp-select-wrapper {
+  position: relative;
+}
+
+.rbp-select {
+  position: relative;
+}
+
+.rbp-select-display {
+  width: 100%;
+  height: 42px;
+  padding: 6px 16px;
+  border: 2px solid var(--rbp-input-stroke);
+  border-radius: var(--rbp-rounded-md);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rbp-select-display:hover {
+  border-color: var(--rbp-gray-300);
+}
+
+.rbp-select-display span:first-child {
+  color: var(--rbp-text-primary);
+}
+
+.rbp-select-display:focus {
+  outline: none;
+  border-color: var(--rbp-primary);
+}
+
+/* Placeholder state for select */
+.rbp-select-display.rbp-placeholder span:first-child {
+  color: var(--rbp-gray-300);
+}
+
+.rbp-select-arrow {
+  color: var(--rbp-gray-400);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.rbp-select-arrow i {
+  font-size: 14px;
+  color: var(--rbp-gray-500);
+}
+
+/* Select Dropdown */
+.rbp-select-dropdown {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  background: var(--rbp-surface-2);
+  border: 1px solid var(--rbp-surface-2-stroke);
+  border-radius: var(--rbp-rounded-md);
+  box-shadow: var(--rbp-shadow-lg);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 100;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.rbp-dropdown-item {
+  padding: 6px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--rbp-gray-900);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.rbp-dropdown-item:hover {
+  background: var(--rbp-gray-50);
+}
+
+/* Skills Section */
+.rbp-skills-section {
+  margin-bottom: 20px;
+}
+
+/* Skills Cloud */
+.rbp-skills-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Skill Chip */
+.rbp-skill-chip {
+  height: 26px;
+  padding: 0px 12px;
+  border-radius: var(--rbp-rounded-full);
+  background: var(--rbp-choice-list-item-normal);
+  color: var(--rbp-gray-900);
+  border: 1px solid var(--rbp-choice-list-item-stroke);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.rbp-skill-chip:hover {
+  background: var(--rbp-choice-list-item-hover);
+}
+
+.rbp-skill-chip.rbp-selected {
+  background: var(--rbp-primary);
+  border: 1px solid var(--rbp-primary);
+  color: white;
+}
+
+.rbp-skill-chip:disabled {
+  background: var(--rbp-input-bg-disabled);
+  color: var(--rbp-input-disabled);
+  cursor: not-allowed;
+}
+
+/* Custom Skill Input Area */
+.rbp-custom-skill-input-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  width: 100%;
+}
+
+.rbp-custom-skill-input {
+  flex: 1;
+  height: 34px;
+  padding: 4px 12px;
+  border: 1.5px dashed var(--rbp-slate-300);
+  border-radius: var(--rbp-rounded-md);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-family: var(--rbp-font-family);
+  color: var(--rbp-text-primary);
+  background: var(--rbp-neutral-0);
+  transition: border-color 0.2s ease;
+}
+
+.rbp-custom-skill-input:hover {
+  border-color: var(--rbp-gray-400);
+}
+
+.rbp-custom-skill-input:focus {
+  outline: none;
+  border-color: var(--rbp-primary);
+  border-style: solid;
+}
+
+.rbp-custom-skill-input::placeholder {
+  color: var(--rbp-gray-400);
+  font-weight: 400;
+}
+
+.rbp-custom-skill-input:disabled {
+  background: var(--rbp-input-bg-disabled);
+  color: var(--rbp-input-disabled);
+  cursor: not-allowed;
+  border-color: var(--rbp-input-bg-disabled);
+}
+
+.rbp-custom-skill-add-btn {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--rbp-slate-300);
+  border-radius: var(--rbp-rounded-md);
+  background: var(--rbp-neutral-0);
+  color: var(--rbp-primary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.rbp-custom-skill-add-btn:hover:not(:disabled) {
+  background: var(--rbp-primary);
+  color: var(--rbp-neutral-0);
+  border-color: var(--rbp-primary);
+}
+
+.rbp-custom-skill-add-btn:disabled {
+  background: var(--rbp-input-bg-disabled);
+  color: var(--rbp-input-disabled);
+  cursor: not-allowed;
+  border-color: var(--rbp-input-bg-disabled);
+}
+
+/* Custom Skills Cloud */
+.rbp-custom-skills-cloud {
+  margin-top: 8px;
+}
+
+/* Custom Skill Chip (with delete button) */
+.rbp-custom-skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-right: 6px;
+}
+
+.rbp-chip-label {
+  pointer-events: none;
+}
+
+.rbp-chip-delete {
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.7;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: opacity 0.15s ease;
+}
+
+.rbp-chip-delete:hover {
+  opacity: 1;
+}
+
+.rbp-custom-skill-input:focus-visible,
+.rbp-custom-skill-add-btn:focus-visible {
+  outline: 2px solid var(--rbp-primary);
+  outline-offset: 2px;
+}
+
+/* Button */
+.rbp-button {
+  width: 100%;
+  height: 40px;
+  padding: 14px 24px;
+  border-radius: var(--rbp-rounded-md);
+  border: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.14px;
+  gap: 6px;
+}
+
+.rbp-button:disabled {
+  background: var(--rbp-input-bg-disabled);
+  color: var(--rbp-input-disabled);
+  cursor: not-allowed;
+}
+
+.rbp-button:not(:disabled) {
+  background: var(--rbp-primary);
+  color: var(--rbp-neutral-0);
+}
+
+.rbp-button:not(:disabled):hover {
+  background: var(--rbp-blue-500);
+}
+
+.rbp-btn-icon {
+  font-size: 16px;
+}
+
+/* Empty State */
+.rbp-empty-container {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.rbp-empty-state {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 0;
+}
+
+.rbp-loading-state {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.rbp-empty-icon {
+  opacity: 0.5;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--rbp-input-bg-disabled);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: var(--rbp-input-disabled);
+  margin-bottom: 16px;
+}
+
+.rbp-empty-text {
+  color: var(--rbp-input-disabled);
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 400px;
+}
+
+/* Skill Chip Skeleton */
+.rbp-skills-cloud-skeleton {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.rbp-skill-chip-skeleton {
+  height: 26px;
+  border-radius: var(--rbp-rounded-full);
+  background: var(--rbp-surface-skeleton);
+  animation: rbp-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+/* Skeleton Loader */
+.rbp-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: var(--rbp-rounded-md);
+  background: var(--rbp-choice-list-item-normal);
+  padding: 12px 16px;
+}
+
+.rbp-skeleton-line {
+  height: 24px;
+  border-radius: var(--rbp-rounded-md);
+  background: var(--rbp-surface-skeleton);
+  animation: rbp-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.rbp-skeleton-line:last-child {
+  width: 100%;
+}
+
+@keyframes rbp-skeleton-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Results Container */
+.rbp-results-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.rbp-bullets-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.rbp-results-container .rbp-cta-btn {
+  flex-shrink: 0;
+}
+
+/* Bullet Item */
+.rbp-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  border-radius: var(--rbp-rounded-md);
+  background: var(--rbp-choice-list-item-normal);
+  padding: 12px 8px 12px 16px;
+}
+
+.rbp-bullet-item:last-child {
+  border-bottom: none;
+}
+
+.rbp-bullet-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--rbp-text-primary);
+}
+
+.rbp-bullet-text strong {
+  font-weight: 700;
+  color: var(--rbp-gray-900);
+}
+
+/* Copy Button */
+.rbp-copy-btn {
+  flex-shrink: 0;
+  width: 20px;
+  border: none;
+  height: 20px;
+  color: var(--rbp-blue-500);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  opacity: 0;
+}
+
+.rbp-bullet-item:hover .rbp-copy-btn {
+  opacity: 1;
+}
+
+@keyframes rbp-copy-bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.rbp-role-details {
+  width: 40%;
+  border-right: 1px solid var(--rbp-surface-2-stroke);
+  border-top-left-radius: var(--rbp-rounded-lg);
+  border-bottom-left-radius: var(--rbp-rounded-lg);
+  gap: 24px;
+}
+
+/* Disabled State for Left Panel */
+.rbp-role-details.rbp-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Scrollbar Styling */
+.rbp-autocomplete-list::-webkit-scrollbar,
+.rbp-select-dropdown::-webkit-scrollbar,
+.rbp-results-container::-webkit-scrollbar,
+.rbp-bullets-list::-webkit-scrollbar,
+.rbp-role-details::-webkit-scrollbar {
+  width: 6px;
+}
+
+.rbp-autocomplete-list::-webkit-scrollbar-track,
+.rbp-select-dropdown::-webkit-scrollbar-track,
+.rbp-results-container::-webkit-scrollbar-track,
+.rbp-bullets-list::-webkit-scrollbar-track,
+.rbp-role-details::-webkit-scrollbar-track {
+  background: var(--rbp-gray-50);
+}
+
+.rbp-autocomplete-list::-webkit-scrollbar-thumb,
+.rbp-select-dropdown::-webkit-scrollbar-thumb,
+.rbp-results-container::-webkit-scrollbar-thumb,
+.rbp-bullets-list::-webkit-scrollbar-thumb,
+.rbp-role-details::-webkit-scrollbar-thumb {
+  background: var(--rbp-gray-300);
+  border-radius: 3px;
+}
+
+.rbp-autocomplete-list::-webkit-scrollbar-thumb:hover,
+.rbp-select-dropdown::-webkit-scrollbar-thumb:hover,
+.rbp-results-container::-webkit-scrollbar-thumb:hover,
+.rbp-role-details::-webkit-scrollbar-thumb:hover {
+  background: var(--rbp-gray-400);
+}
+
+/* Focus Visible for Accessibility */
+.rbp-skill-chip:focus-visible,
+.rbp-generate-btn:focus-visible,
+.rbp-copy-btn:focus-visible,
+.rbp-cta-btn:focus-visible {
+  outline: 2px solid var(--rbp-primary);
+  outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .rbp-generator {
+    display: none;
+  }
+}
+
+.rbp-bullet-points {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 40%;
+  gap: 16px;
+  border-top-right-radius: var(--rbp-rounded-lg);
+  border-bottom-right-radius: var(--rbp-rounded-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Notification Toast Styles */
+.rbp-notification-container {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.rbp-toast {
+  padding: 6px 16px;
+  border-radius: var(--rbp-rounded-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-family: var(--rbp-font-family);
+  pointer-events: auto;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rbp-toast-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rbp-toast i {
+  width: 14px;
+  height: 16px;
+  font-size: 16px;
+  color: var(--rbp-surface-3-label);
+}
+
+/* Toast type variants */
+.rbp-toast-success {
+  background: var(--rbp-surface-3);
+  color: var(--rbp-surface-3-label);
+}
+
+.rbp-toast-error {
+  background: var(--rbp-error);
+  color: var(--rbp-surface-3-label);
+}
+
+.rbp-toast-warning {
+  background: #fb923c;
+  color: var(--rbp-surface-3-label);
+}
+
+.rbp-toast-info {
+  background: var(--rbp-surface-3);
+  color: var(--rbp-surface-3-label);
+}

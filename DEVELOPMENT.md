@@ -10,7 +10,7 @@ It serves as the public CDN distribution point and should **not** be edited dire
 ```
 rezi-bulletpoint-sdk-public/
 ├── package.json              # Distribution package metadata
-├── rezi-bullets.min.js       # 🚫 Built JS (DO NOT EDIT)
+├── rezi-bullet-sdk.min.js       # 🚫 Built JS (DO NOT EDIT)
 ├── README.md                 # Public documentation
 ├── WEBFLOW_SETUP.md          # Integration guide
 └── DEVELOPMENT.md            # This file
@@ -18,7 +18,7 @@ rezi-bulletpoint-sdk-public/
 
 ## 🚨 Important: DO NOT EDIT BUILT FILES
 
-The file `rezi-bullets.min.js` is **automatically generated** and will be overwritten. Any manual changes will be lost.
+The file `rezi-bullet-sdk.min.js` is **automatically generated** and will be overwritten. Any manual changes will be lost.
 
 ## 🔄 Development Workflow
 
@@ -100,7 +100,7 @@ After making changes in the monorepo:
    nx build-umd bulletpoint-sdk
    ```
 
-   Output: `dist/libs/bulletpoint-sdk-browser/rezi-bullets.min.js`
+   Output: `dist/libs/bulletpoint-sdk-browser/rezi-bullet-sdk.min.js`
 
 3. **Commit and push to rezi-bulletpoint-sdk-public:**
    ```bash
@@ -123,8 +123,8 @@ After making changes in the monorepo:
 
 Once pushed to GitHub, the files are automatically available via:
 
-- **jsDelivr:** `https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@latest/rezi-bullets.min.js`
-- **GitHub Raw:** `https://raw.githubusercontent.com/rezi-io/rezi-bulletpoint-sdk-public/main/rezi-bullets.min.js`
+- **jsDelivr:** `https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@latest/rezi-bullet-sdk.min.js`
+- **GitHub Raw:** `https://raw.githubusercontent.com/rezi-io/rezi-bulletpoint-sdk-public/main/rezi-bullet-sdk.min.js`
 
 ## 🧪 Testing Changes
 
@@ -138,7 +138,7 @@ Once pushed to GitHub, the files are automatically available via:
    ```
    libs/bulletpoint-sdk/example.html
    ```
-   The example references the local build at `../../dist/libs/bulletpoint-sdk-browser/rezi-bullets.min.js`
+   The example references the local build at `../../dist/libs/bulletpoint-sdk-browser/rezi-bullet-sdk.min.js`
 
 3. **Or test with a custom HTML file:**
    ```html
@@ -151,7 +151,7 @@ Once pushed to GitHub, the files are automatically available via:
          data-recaptcha-key="YOUR_DEV_KEY"
          data-cta-url="http://localhost:3000/signup"
        ></div>
-       <script src="../../dist/libs/bulletpoint-sdk-browser/rezi-bullets.min.js"></script>
+       <script src="../../dist/libs/bulletpoint-sdk-browser/rezi-bullet-sdk.min.js"></script>
      </body>
    </html>
    ```
@@ -161,7 +161,7 @@ Once pushed to GitHub, the files are automatically available via:
 Test with the actual CDN URLs in development:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@main/rezi-bullets.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@main/rezi-bullet-sdk.min.js"></script>
 ```
 
 ## 📝 Documentation Updates
@@ -208,14 +208,14 @@ After deploying:
 
 - Ensure you're editing files in the monorepo, not the public repo
 - Check that the build (`nx build-umd bulletpoint-sdk`) ran successfully
-- Verify `dist/libs/bulletpoint-sdk-browser/rezi-bullets.min.js` was updated
+- Verify `dist/libs/bulletpoint-sdk-browser/rezi-bullet-sdk.min.js` was updated
 
 **"CDN still serving old version"**
 
 - CDNs may cache files for up to 24 hours
 - Use commit-specific URLs for immediate updates:
   ```html
-  <script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@COMMIT_HASH/rezi-bullets.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public@COMMIT_HASH/rezi-bullet-sdk.min.js"></script>
   ```
 
 **"Skills not loading"**
@@ -243,4 +243,4 @@ After deploying:
 | Deploy to public  | `rezi-bulletpoint-sdk-public`                  | `git push origin main`      |
 | Update version    | Both repos                             | Edit `package.json`         |
 
-Remember: **Never edit `rezi-bullets.min.js` directly!**
+Remember: **Never edit `rezi-bullet-sdk.min.js` directly!**
