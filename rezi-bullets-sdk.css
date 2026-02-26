@@ -252,7 +252,8 @@
   color: var(--rbp-text-primary);
 }
 
-.rbp-select-display:focus {
+.rbp-select-display:focus,
+.rbp-select-display.rbp-focused {
   outline: none;
   border-color: var(--rbp-primary);
 }
