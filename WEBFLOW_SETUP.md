@@ -25,20 +25,21 @@ The easiest way to add the bullet point generator to your website:
 ```html
 <!doctype html>
 <html>
-	<head>
-		<!-- No separate CSS needed — styles are bundled in the script -->
-	</head>
-	<body>
-		<!-- Bullet Point Generator Container -->
-		<div
-			data-bullet-generator
-			data-recaptcha-key="YOUR_RECAPTCHA_SITE_KEY"
-			data-cta-url="https://app.rezi.ai/signup"
-			data-max-skills="5"
-		></div>
+  <head>
+    <!-- The SDK automatically loads rezi-bullets-sdk.css from the same directory as the JS bundle.
+         Both files must be served from the same location. -->
+  </head>
+  <body>
+    <!-- Bullet Point Generator Container -->
+    <div
+      data-bullet-generator
+      data-recaptcha-key="YOUR_RECAPTCHA_SITE_KEY"
+      data-cta-url="https://app.rezi.ai/signup"
+      data-max-skills="5"
+    ></div>
 
-		<script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullet-sdk.min.js"></script>
-	</body>
+    <script src="https://cdn.jsdelivr.net/gh/rezi-io/rezi-bulletpoint-sdk-public/rezi-bullet-sdk.min.js"></script>
+  </body>
 </html>
 ```
 
@@ -52,13 +53,13 @@ The SDK will automatically:
 
 ### HTML Attributes
 
-| Attribute               | Description                                                | Required              |
-| ----------------------- | ---------------------------------------------------------- | --------------------- |
-| `data-bullet-generator` | Marks the element as the SDK container                     | ✅ Yes                |
-| `data-recaptcha-key`    | reCAPTCHA Enterprise site key for API access               | ✅ Yes                |
-| `data-cta-url`          | URL to redirect when CTA is clicked or rate limit reached  | ❌ No                 |
-| `data-max-skills`       | Maximum number of skills a user can select                 | ❌ No (default: `5`)  |
-| `data-dev`              | Enable development mode (console logs, dev API endpoints)  | ❌ No (default: off)  |
+| Attribute               | Description                                               | Required             |
+| ----------------------- | --------------------------------------------------------- | -------------------- |
+| `data-bullet-generator` | Marks the element as the SDK container                    | ✅ Yes               |
+| `data-recaptcha-key`    | reCAPTCHA Enterprise site key for API access              | ✅ Yes               |
+| `data-cta-url`          | URL to redirect when CTA is clicked or rate limit reached | ❌ No                |
+| `data-max-skills`       | Maximum number of skills a user can select                | ❌ No (default: `5`) |
+| `data-dev`              | Enable development mode (console logs, dev API endpoints) | ❌ No (default: off) |
 
 ## Manual Initialization
 
@@ -68,27 +69,26 @@ For more control over the widget:
 <div id="my-container"></div>
 
 <script>
-	const generator = new ReziBulletSDK.BulletPointGenerator({
-		containerSelector: '#my-container',
-		ctaUrl: 'https://app.rezi.ai/signup',
-		maxSkillSelection: 5,
-		isDev: false,
+  const generator = new ReziBulletSDK.BulletPointGenerator({
+    containerSelector: '#my-container',
+    ctaUrl: 'https://app.rezi.ai/signup',
+    maxSkillSelection: 5,
+    isDev: false,
 
-		// Called when bullet points are generated
-		onGenerate: (bullets) => {
-			console.log('Generated bullets:', bullets);
-		},
+    // Called when bullet points are generated
+    onGenerate: (bullets) => {},
 
-		// Called when a bullet is copied to clipboard
-		onCopy: (bullet) => {
-			console.log('Copied:', bullet);
-		},
+    // Called when a bullet is copied to clipboard
+    onCopy: (bullet) => {},
 
-		// Called when CTA button is clicked (before redirect)
-		onCTAClick: (bullets, jobTitle) => {
-			localStorage.setItem('resume_prefill', JSON.stringify({ jobTitle, bullets }));
-		},
-	});
+    // Called when CTA button is clicked (before redirect)
+    onCTAClick: (bullets, jobTitle) => {
+      localStorage.setItem(
+        'resume_prefill',
+        JSON.stringify({ jobTitle, bullets }),
+      );
+    },
+  });
 </script>
 ```
 
@@ -96,34 +96,34 @@ For more control over the widget:
 
 ```typescript
 interface BulletPointConfig {
-	containerSelector: string;          // CSS selector for the widget container
-	isDev?: boolean;                    // Use dev API endpoints and enable console logs
-	ctaUrl?: string;                    // URL for the CTA button redirect
-	maxSkillSelection?: number;         // Max selectable skills (default: 5)
-	recaptchaSiteKey?: string;          // reCAPTCHA Enterprise site key
-	onGenerate?: (bullets: string[]) => void;                  // Bullets generated
-	onCopy?: (bullet: string) => void;                         // Bullet copied
-	onCTAClick?: (bullets: string[], jobTitle: string) => void; // CTA clicked
-	onError?: (error: Error) => void;                          // Error occurred
+  containerSelector: string; // CSS selector for the widget container
+  isDev?: boolean; // Use dev API endpoints and enable console logs
+  ctaUrl?: string; // URL for the CTA button redirect
+  maxSkillSelection?: number; // Max selectable skills (default: 5)
+  recaptchaSiteKey?: string; // reCAPTCHA Enterprise site key
+  onGenerate?: (bullets: string[]) => void; // Bullets generated
+  onCopy?: (bullet: string) => void; // Bullet copied
+  onCTAClick?: (bullets: string[], jobTitle: string) => void; // CTA clicked
+  onError?: (error: Error) => void; // Error occurred
 }
 ```
 
 ## Styling
 
-The SDK bundles its own styles — no separate CSS file is required.
+The SDK automatically injects a `<link>` tag that loads `rezi-bullets-sdk.css` from the same directory as the JS bundle. Both files must be served from the same location — for example, if your script tag points to `/cdn/rezi-bullet-sdk.min.js`, the CSS file must be at `/cdn/rezi-bullets-sdk.css`.
 
 ### CSS Variables
 
 ```css
 :root {
-	--primary: #4d70eb;             /* Primary brand color */
-	--primary-light: #c6c8ff;       /* Light primary (selected chip bg) */
-	--rezi-bule-500: #6b84fe;       /* Primary hover color */
-	--success: #22c55e;             /* Success state color */
-	--error: #ef4444;               /* Error state color */
-	--border: #e5e7eb;              /* Border color */
-	--rounded-lg: 8px;              /* Widget border radius */
-	--font-family: 'Source Sans Pro', sans-serif; /* Widget font */
+  --primary: #4d70eb; /* Primary brand color */
+  --primary-light: #c6c8ff; /* Light primary (selected chip bg) */
+  --rezi-bule-500: #6b84fe; /* Primary hover color */
+  --success: #22c55e; /* Success state color */
+  --error: #ef4444; /* Error state color */
+  --border: #e5e7eb; /* Border color */
+  --rounded-lg: 8px; /* Widget border radius */
+  --font-family: 'Source Sans Pro', sans-serif; /* Widget font */
 }
 ```
 
@@ -132,19 +132,19 @@ The SDK bundles its own styles — no separate CSS file is required.
 ```css
 /* Override the widget container */
 [data-bullet-generator] .wrapper {
-	border-radius: 12px;
-	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
 /* Override skill chip selected state */
 [data-bullet-generator] .skill-chip.selected {
-	background: #your-brand-color;
-	border-color: #your-brand-color;
+  background: #your-brand-color;
+  border-color: #your-brand-color;
 }
 
 /* Override the generate button */
 [data-bullet-generator] .button:not(:disabled) {
-	background: #your-brand-color;
+  background: #your-brand-color;
 }
 ```
 
@@ -174,16 +174,16 @@ The SDK fails silently and uses fallback content to ensure users always see bull
 
 ```javascript
 const generator = new ReziBulletSDK.BulletPointGenerator({
-	containerSelector: '#container',
-	ctaUrl: 'https://app.rezi.ai/signup',
+  containerSelector: '#container',
+  ctaUrl: 'https://app.rezi.ai/signup',
 
-	onError: (error) => {
-		console.error('SDK error:', error);
+  onError: (error) => {
+    console.error('SDK error:', error);
 
-		// Common scenarios (all handled automatically):
-		// - Rate limit exceeded → user redirected to ctaUrl
-		// - API unavailable → generic fallback bullets shown
-		// - reCAPTCHA failure → API called without token (graceful)
-	},
+    // Common scenarios (all handled automatically):
+    // - Rate limit exceeded → user redirected to ctaUrl
+    // - API unavailable → generic fallback bullets shown
+    // - reCAPTCHA failure → API called without token (graceful)
+  },
 });
 ```

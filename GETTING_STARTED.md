@@ -8,7 +8,7 @@ The easiest way to add the bullet point generator to your website:
 <!doctype html>
 <html>
   <head>
-    <!-- No separate CSS needed — styles are bundled in the script -->
+    <!-- The SDK automatically loads rezi-bullets-sdk.css from the same directory as the JS file -->
   </head>
   <body>
     <!-- Bullet Point Generator Container -->
@@ -23,6 +23,8 @@ The easiest way to add the bullet point generator to your website:
   </body>
 </html>
 ```
+
+> **Note:** The SDK automatically injects `rezi-bullets-sdk.css` at runtime. Both `rezi-bullet-sdk.min.js` and `rezi-bullets-sdk.css` must be served from the same directory.
 
 The SDK will automatically:
 
@@ -57,14 +59,10 @@ For more control over the widget:
     isDev: false,
 
     // Called when bullet points are generated
-    onGenerate: (bullets) => {
-      console.log('Generated bullets:', bullets);
-    },
+    onGenerate: (bullets) => {},
 
     // Called when a bullet is copied to clipboard
-    onCopy: (bullet) => {
-      console.log('Copied:', bullet);
-    },
+    onCopy: (bullet) => {},
 
     // Called when CTA button is clicked (before redirect)
     onCTAClick: (bullets, jobTitle) => {
@@ -116,7 +114,7 @@ The widget includes an experience level selector with the following options:
 
 ## Styling
 
-The SDK bundles its own styles — no separate CSS file is required.
+The SDK automatically loads `rezi-bullets-sdk.css` from the same directory as the JS file at runtime. Both files must be served from the same location.
 
 ### CSS Variables
 
@@ -162,7 +160,7 @@ You can override the SDK's appearance using CSS variables on a parent element or
 
 ### Pre-filling Job Title
 
-```javascript
+````javascript
 const generator = new ReziBulletSDK.BulletPointGenerator({
   containerSelector: '#container',
   ctaUrl: 'https://app.rezi.ai/signup',
@@ -170,9 +168,6 @@ const generator = new ReziBulletSDK.BulletPointGenerator({
 
 // Access widget state programmatically
 const state = generator.getState();
-console.log('Current job title:', state.jobTitle);
-console.log('Selected skills:', state.selectedSkills);
-console.log('Generated bullets:', state.bullets);
 ```
 
 ### Persisting Bullets for Sign-up Flow
@@ -194,7 +189,7 @@ const generator = new ReziBulletSDK.BulletPointGenerator({
     // SDK will redirect to ctaUrl after this callback
   },
 });
-```
+````
 
 ### Development Mode
 
